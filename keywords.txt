@@ -1,9 +1,0 @@
-e2ee
-open source
-OSS
-FOSS
-cryptography
-network state
-personal server
-MLS
-decentralized
