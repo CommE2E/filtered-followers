@@ -65,6 +65,11 @@ print("Second deduping process started...")
 selected_df['keyword'] = selected_df['keyword'].apply(lambda x: ', '.join(list(set(x.split(', ')))))
 selected_df = selected_df.drop_duplicates(subset=['profileUrl', 'screenName'])
 
+print("Sorting the DataFrame by the number of keywords...")
+selected_df['keyword_count'] = selected_df['keyword'].apply(lambda x: x.count(','))
+selected_df = selected_df.sort_values(by='keyword_count', ascending=False)
+selected_df = selected_df.drop(columns=['keyword_count'])
+
 print("Writing the selected rows to the output file...")
 selected_df.to_csv('output.csv', index=False, quoting=csv.QUOTE_ALL, encoding='utf-8')
 
